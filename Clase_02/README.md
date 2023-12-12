@@ -12,6 +12,7 @@
 1. Crear un programa que solicite los goles del equipo1 y luego los goles del equipo2
 2. Verificar que equipo gano, perdio o empato 
 
+---
 
 1. Solicitar las notas del examen
 2. Mostrar si el alumno:
