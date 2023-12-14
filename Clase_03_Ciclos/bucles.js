@@ -1,16 +1,7 @@
-// HAcer un programa que muestre diez veces el mensaje Bienvenido
+// solicita el usuario hasta que sea el usuario 'juan'
+let usuario; 
 
-
-// BUCLE 
-//     control    condicion
-for ( let i = 1;  i <= 10;  i++  ) {
-    console.log(' Valor',  i);
-    if (  i === 5 ){
-        //break;  // Rompo el bucle 
-        continue;
-        console.log('Es Cinco')
-        alert('Algo');
-    }
-    console.log('------');
-}
-
+do {
+    console.log('Estamos dentro del Bucle Do... while');
+    usuario = prompt('Usuario'); 
+} while( usuario != 'lucas' );
