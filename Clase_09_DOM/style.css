@@ -56,7 +56,7 @@ main {
   border-radius: 5px;
   color: aliceblue;
   width: 200px;
-  height: 150px;
+  min-height: 150px;
   background-color: #2a2e30;
 }
 

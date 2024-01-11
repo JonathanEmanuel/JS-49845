@@ -1,21 +1,34 @@
+/* ------------------------ 1.Selecciono los elemento ----------------------- */
+const titulo = document.querySelector('h1');
+const sub = document.querySelector('.sub');
+const contenedor = document.querySelector('#cursos');
 
-const titulo = document.getElementById('titulo');
-const pJS = document.getElementById('text-js');
-//const nombre = prompt('Ingrese su nombre');
-const contenedor = document.getElementById('cursos');
-let mensaje = 'Bienvenido '
+const cursos = [
+    {name: 'JavaScript', img: 'images/js.png', description: 'Define el comportamiento de la Aplicación Web'},
+    {name: 'CSS', img: 'images/css.png', description: 'Define el estilo de la Aplicación Web'},
+    {name: 'html', img: 'images/html.png', description: 'Define la estructura de la Aplicación Web'},
+    {name: 'Python', img: 'images/python.png', description: 'Nuevo curso'}
+]
 
-console.log(titulo);
+/* --------------------------- 2.Recorro el array --------------------------- */
+cursos.forEach(curso => {
+    /* ------------------------ 3.Creo los elemento HTML ------------------------ */
+    contenedor.innerHTML += // html
+                        `<div class="card">
+                            <div class="card-header">
+                                <img src="${curso.img}" alt="HTML">
+                            </div>
+                            <div class="card-body">
+                                <h4> ${curso.name}</h4>
+                                <p>${curso.description}</p>
+                            </div>
+                        </div>`;
+});
 
-titulo.innerText = mensaje;
-//                      0               1               2
-const logos = ['images/js.png', 'images/css.png', 'images/html.png']
-// Inserto desde JS la (s) card (s)
-for(let i=0; i<3; i++){
-    let imagen = logos[i];
-    console.log(imagen);
+/* ---------------------- 4.Seleccion todos los cursos ---------------------- */
+const seleccion = document.querySelectorAll('.card');
+console.log(seleccion);
 
-    contenedor.innerHTML += '<div class="card"><div class="card-header"><img src="'+ imagen +'" alt="HTML"></div></div>';
-}
-
-
+seleccion.forEach(element => {
+    console.log(element);
+});
