@@ -1,95 +1,80 @@
-/* 
-    💡 Calculara de notas de los alumnos de un curso
-    📌 Ingresar tres estudiates. Luego cantidad elegida -- Ok
-    📌 Ingresar la nota1 y la nota2 --Ok
-    📌 Calcular el promedio - Ok
-    📌 Mostrar si esta 
-        - Promocionado ( 7 o más )
-        - Aprobado ( 4 o más )
-        - Desaprobado ( menos de cuatro)
-    📌 Validar Nombre, nota1 y nota2  - Ok
-*/
+const list = [
+    { id: 1, name: 'Gabriel Ruiz', test1: 8, test2: 9, status: 'Promocionado'},
+    { id: 2, name: 'Lucia Herrera',   test1: 6, test2: 4, status: 'Aprobado'},
+    { id: 3, name: 'Sebastian Cruz', test1: 3, test2: 2, status: 'Desaprobado'},
+    { id: 4, name: 'Emanuel Ruiz', test1: 1, test2: 2, status: 'Desaprobado'},
+    { id: 5, name: 'Nahuel Ruiz', test1: 10, test2: 8, status: 'Promocionado'}
+]
 
+class Ratings {
+    constructor(list){
+        this.list = list;
+    }
+    addStudent(student){
+        let id = this.list.length + 1;
+        student.id = id;
 
-/* FUNCION 1 - ESTADO: Retornar un APRO, DES, PROM */
-function obtenerEstado(promedio){
-    if( promedio < 4 ){
-        return 'Desaprobado';
-    } else if (  (promedio >= 4) && (promedio < 7)  ){
-        return 'Aprobado';
-    } else if ( promedio >= 7) {
-        return 'Promocionado';
+        const status = this.getStudentAverage(student.test1, student.test2);
+        student.status = status;
+
+        // Realizar las validaciones de los atributos
+        this.list.push(student);
+    }
+    getStudentAverage(test1, test2){
+        const average = ( test1 + test2 ) / 2;
+        if( average >= 7 ){
+            return 'Promocionado';
+
+        } else if( average >= 4 && average < 7){
+            return 'Aprobado';
+        } else { 
+            return 'Desaprobado';
+        }
+    }
+    // Retornar el estudiante por id
+    getStudentById(id){
+        const student = this.list.find( item => item.id === id );
+        return student ? student : 'No existe el estudiante';
+
+        if ( student ){
+            return student;
+        } else {
+            return 'No existe el estudiante';
+        }
+       
+    }
+    getStudentByStatus(status ){
+        const list = this.list.filter( item => item.status === status );
+        return list;
+    }
+    getStudentByName(name){
+        const list = this.list.filter(  item => item.name.toLowerCase().includes( name.toLowerCase() ) );
+        return list;
+    }
+    showStudents(){
+        console.table(this.list);
     }
 }
 
-/* FUNCION 2 - PROMEDIO */
-function calcularPromedio(nota1, nota2){
-    return ( parseFloat(nota1) + parseFloat(nota2) ) / 2;
-}
 
-/* FUNCION 3 - VALIDAR NOTA. Sea un numero y sea entre 1 y 10 */
-function validarNota(nota){           // No es un No numero 
-    if( (nota >= 1) && (nota <=10)  && !isNaN(nota)  ){
-        return true;
-    } 
-    else {
-        return false;
-    }
-}
+const libro = new Ratings(list);
+//const id = parseInt(  prompt('Ingrese el ID') )
+// const estudiantes = libro.getStudentById(id);
 
-/* FUNCION 4 - VALIDAR NOMBRE:  Que no sea vacio, y que tenga almenos tres letras  */
-function validarNombre(nombre){
-         //    true             true
-    if(  nombre == '' || (nombre.length < 3) ){
-        return false;
-    } else {
-        return true;
-    }
-}
+const filtrados = libro.getStudentByStatus('Desaprobado');
+console.table( filtrados );
 
 
+let nombre = prompt('Nombre');
+do {
+    nota1 = parseFloat( prompt('nota 1'));
+    nota2 = parseFloat( prompt('nota 2'));
+
+    // { id: 5, name: 'Nahuel Ruiz', test1: 10, test2: 8, status: 'Promocionado'}
+    libro.addStudent( {name: nombre, test1: nota1, test2: nota2 } );
+
+    libro.showStudents();
+    nombre = prompt('Nombre');
 
 
-/* 
-// Bucle Principal
-for( let i=1; i <= totalEstudiantes; i++  ){
-
-    do { // Pide el nombre del estuadiante hasta que sea valido
-        estudiante = prompt('Nombre del Estudiante');
-
-        if ( ! validarNombre( estudiante)){
-            alert('Nombre invalido');
-        }
-
-    } while( ! validarNombre(estudiante) )
-
-
-    do { // Pide la nota hasta que sea valido
-        nota1 = prompt('Nota 1');
-        if ( ! validarNota( nota1)){
-            alert('Nota Invalida');
-        }
-        
-    } while( ! validarNota(nota1) )
-
-
-    do { // Pide la nota hasta que sea valido
-        nota2 = prompt('Nota 2');
-        if ( ! validarNota( nota2)){
-            alert('Nota Invalida');
-        }
-        
-    } while( ! validarNota(nota2) )
-
-
-    promedio = calcularPromedio(nota1, nota2);
-    estado = obtenerEstado(promedio);
-
-    let mensaje = estudiante + ' | ' + nota1 + ' | ' +  nota2 + ' | ' + '\n Promedio: ' + promedio + ' | ' + estado;
-
-    console.log(mensaje);
-
-    alert(mensaje);
-}
-
- */
+} while( nombre.toLowerCase() != 'salir' )
