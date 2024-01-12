@@ -51,8 +51,27 @@ class Ratings {
         const list = this.list.filter(  item => item.name.toLowerCase().includes( name.toLowerCase() ) );
         return list;
     }
+    showStudentsAverage(){
+        const averages = this.list.map( student => {
+            const average = (student.test1 + student.test2 ) / 2;
+            return { id: student.id, name: student.name, average: average }
+        })
+
+        console.table(averages)
+    }
     showStudents(){
         console.table(this.list);
+        let mensaje = '';
+
+        this.list.forEach(student => {
+            
+            mensaje += `Nombre ${student.name} | Estado : ${student.name}  \n`;
+        });
+            
+
+        alert(mensaje)
+
+
     }
 }
 
