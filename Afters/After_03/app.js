@@ -57,6 +57,13 @@ class Ratings {
             return { id: student.id, name: student.name, average: average }
         })
 
+        // Agrego el ordenar por mayor promedio
+        averages.sort( (a,b) => {
+            if ( a.average < b.average){ return 1  }
+            if (a.average > b.average ){ return -1 }
+
+            return 0
+        })
         console.table(averages)
     }
     showStudents(){
@@ -85,6 +92,7 @@ console.table( filtrados );
 
 
 let nombre = prompt('Nombre');
+
 do {
     nota1 = parseFloat( prompt('nota 1'));
     nota2 = parseFloat( prompt('nota 2'));
@@ -97,3 +105,6 @@ do {
 
 
 } while( nombre.toLowerCase() != 'salir' )
+
+console.log('Mayor Promedio')
+libro.showStudentsAverage();
