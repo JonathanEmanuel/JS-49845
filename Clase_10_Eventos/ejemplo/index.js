@@ -1,4 +1,3 @@
-
 const data = [
     {
         id: "x123",
@@ -37,10 +36,11 @@ const data = [
         like: false
     }
 ];
+
 const nombreUsuario = document.querySelector('#nombreUsuario');
 const covers = document.querySelector('.covers');
-
-
+const cantidad = document.querySelector('#cant-albums');
+let btnsLike;
 
 /* --------------- FUNCION 1 - Capturar el nombre del usuario --------------- */
 function obtenerUsuario(){
@@ -56,6 +56,8 @@ function obtenerUsuario(){
 
 /* --------------------- FUNCION 2 - Renderizar las card -------------------- */
 function renderizarAlbumes(lista){
+
+    cantidad.innerText = `${lista.length } álbumes`
     // Aseguramos que el contenedor este vacio
     covers.innerHTML = '';
     lista.forEach( album => {  // Recorro el array
@@ -67,9 +69,24 @@ function renderizarAlbumes(lista){
                         </li>`;
     });
 
+    btnsLike = document.querySelectorAll('.fa-heart');
+
+    btnsLike.forEach(btn => {
+        btn.addEventListener('click', (evento )=>{
+            console.log(evento.target);
+            const id = evento.target.id;
+            darLike(id);
+        })
+    });
 }
 
-obtenerUsuario();
+/* ------------------------- Funcion III - Dar Like ------------------------- */
+// Busco en el array por id el album y cambior el atributo like a true o false
+function darLike(id){
+    console.log('like');
+}
+
+//obtenerUsuario();
 renderizarAlbumes(data);
 
 

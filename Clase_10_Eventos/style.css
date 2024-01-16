@@ -110,3 +110,7 @@ form {
   flex-direction: column;
   gap: 0.5rem;
 }
+
+p {
+  color: #eaff6a;
+}

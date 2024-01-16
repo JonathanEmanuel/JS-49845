@@ -5,6 +5,8 @@ const btn3 = document.querySelector('#btn-3');
 const formulario = document.querySelector('form');
 const inputEmail = document.querySelector('#inputEmail');
 const inputPassword = document.querySelector('#inputPassword');
+const p = document.querySelector('p');
+
 
 function validarEmailPass(){
     const email = inputEmail.value;
@@ -67,12 +69,25 @@ btn3.addEventListener('click', function(){
     console.log('Se hizo click desde el btn III');
 })
 
-inputNombre.addEventListener('change', () => {
+inputNombre.addEventListener('blur', () => {
+    const nombre = inputNombre.value.trim();
+    if( nombre.length < 3){
+        p.innerText = 'El nombre debe ser de más de tres letras';
+    } else {
+        p.innerText = '';
+    }
     console.log( inputNombre.value );
 })
 
+inputNombre.addEventListener('input', () =>{
+    const nombre = inputNombre.value;
+    p.innerText = nombre;
+})
 
+inputNombre.addEventListener('focus',()=>{
+    p.innerText = '';
 
+})
 /* 
 btn3.addEventListener('click', function(){
     console.log('Se hizo click desde el btn III OTRA VEZ');
