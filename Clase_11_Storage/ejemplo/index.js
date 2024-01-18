@@ -8,11 +8,7 @@ const inputTask1 = document.querySelector('#task1');
 const inputTask2 = document.querySelector('#task2');
 const tableRow = document.querySelector('#table-students tbody')
 
-const list = [
-    { id:1 , name: 'Juan Perez', task1: 9, task2: 7 },
-    { id:2 , name: 'Rocio Gomez', task1: 7, task2: 7 }
-
-]
+let list = [];
 
 btnNew.addEventListener('click', ()=>{
     modal.show();
@@ -39,6 +35,7 @@ frmStudent.addEventListener('submit', (e)=> {
     })
 
     render(list);
+    guardar(list);
     modal.hide();
 })
 
@@ -58,3 +55,20 @@ function render(list){
         </tr>`
     });
 }
+/* ------------- Recibe el array y lo guardar en el localStorage ------------ */
+function guardar(list){
+    localStorage.setItem('notas', JSON.stringify(list) )
+}
+/* ---------- Lee el localStorage y lo retorna ---------- */
+function leer(){
+    const datos = JSON.parse( localStorage.getItem('notas') );
+    if( datos ){
+        return datos;
+    } else {
+        return [];
+    }
+}
+
+list = leer();
+
+render(list);

@@ -1,0 +1,11 @@
+{
+    "nombre": "Sofia",
+    "email": "sofia@gmail.com",
+    "edad": 27,
+    "casado": false,
+    "cursos": [
+        {"nombre": "Desarrollo Web"},
+        {"nombre": "JavaScript"},
+        {"nombre": "React"}
+    ]
+}

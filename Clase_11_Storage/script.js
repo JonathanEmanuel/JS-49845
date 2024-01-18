@@ -56,3 +56,26 @@ inputNombre.addEventListener('input', () =>{
 inputNombre.addEventListener('focus',()=>{
     p.innerText = '';
 })
+
+
+/* ------------------------ Quiero Guardar un objeto ------------------------ */
+const persona = {
+    nombre: 'Sofia',
+    email: 'sofia@gmail.com',
+    edad: 27,
+    casado: false,
+    cursos: [
+        { nombre: 'Desarrollo Web'},
+        { nombre: 'JavaScript'},
+        { nombre: 'React'}
+    ]
+}
+
+
+// Guardo el objeto como String
+localStorage.setItem('persona', JSON.stringify(persona) );
+
+// Leo el Storage como String y luego lo conviero a JSON
+const datos = JSON.parse( localStorage.getItem( 'persona') );
+
+console.log(datos);
