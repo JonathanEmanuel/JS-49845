@@ -1,0 +1,31 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+header, footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header {
+    min-height: 20vh;
+}
+
+main {
+    min-height: 70vh;
+}
+
+footer {
+    min-height: 10vh;
+}
+
+#btnNew{
+    position: sticky;
+    top: 20vh;
+}
+
+.icon {
+    width: 64px;
+}
