@@ -78,3 +78,24 @@ console.log(  logueado || 'No estas logueado'  );
 
 // CON EL OPERADOR OR
 const lista2 = JSON.parse( localStorage.getItem('lista')) || [];
+
+// null, undefined, 0, '', NAN, false  -> False
+
+
+/* ------------------------------ OPERADARO ?? ------------------------------ */
+// null, undefined, false  -> False
+
+const valor = '';
+console.log(  valor  ?? ' Sin valor ' );
+
+
+let persona1 = {
+    name: 'Julieta',
+    email: 'july@mail.com'
+}
+
+let persona2 = null;
+
+console.log( persona1.foto || 'avatar_generico1.jpg' );
+console.log( persona2?.foto || 'avatar_generico2.jpg' );
+
