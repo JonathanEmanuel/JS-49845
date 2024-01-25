@@ -1,0 +1,63 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600&display=swap');
+
+*{
+    margin: 0;
+    
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1, h2 {
+    margin: 1rem 0;
+}
+header {
+    height: 15vh;
+    background-color: rgb(64, 64, 235);
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: sticky;
+    top: -1rem;
+}
+
+main {
+    min-height: 80vh;
+    width: 70%;
+    margin: 0 auto;
+}
+
+
+
+footer {
+    height: 5vh;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    background-color: rgb(32, 31, 31);
+    color: aliceblue;
+    padding-right: 2rem;
+}
+
+.card {
+    min-height: 400px;
+    display: flex;
+    justify-content: space-between;
+}
+.mt-1{
+    margin-top: 1rem;
+}
+
+.btn-delete {
+    color: rgb(172, 40, 40);
+    cursor: pointer;
+}
+
+.btn-detalle{
+    color: rgb(46, 66, 180);
+    cursor: pointer;
+}
+
+.btn-update {
+    color: rgb(36, 149, 83);
+    cursor: pointer;
+}
