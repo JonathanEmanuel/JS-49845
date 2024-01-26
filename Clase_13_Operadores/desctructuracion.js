@@ -88,7 +88,7 @@ let datos = {
 console.table( datos )
 
 
-/* ----------------------------- Rest parameters ---------------------------- */
+/* ----------------------------- Rest parameters  ---------------------------- */
 function mostrarDatos( ...usuarios ){ // Recibos los datos como Array
     console.log( usuarios)
 }
