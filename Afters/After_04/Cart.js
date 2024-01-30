@@ -1,7 +1,6 @@
 class Cart {
     constructor( list = [] ){
         this.cart = list;
-        console.log('Hola desde el constructor')
     }
 
     addToCart( {id, name, img, price} ){

@@ -25,6 +25,18 @@ btnModalCarrito.addEventListener('click', function(){
     modal.show();
 })
 
+btnSave.addEventListener('click', ()=> {
+
+    modal.hide();
+    Swal.fire({
+        title: "Carrito de Compras",
+        text: "Compra finalizada",
+        icon: "success"
+    });
+
+    localStorage.removeItem('cart');
+})
+
 btnClose.addEventListener('click', ()=> {
     modal.hide();
 })
@@ -82,6 +94,17 @@ const addToCart = ( e )=> {
     console.table(product);
     cart.addToCart( product);
     cartCount.innerText = cart.getCount();
+    
+    Toastify({
+        close: true,
+        text: "Producto agregado al Carrito",
+        gravity: 'bottom',
+        duration: 3000,
+        style: {
+            background: "linear-gradient(to right, #00b09b, #96c93d)",
+          },
+    }).showToast();
+
 }
 
 const redenCart = (list) => {
@@ -98,3 +121,5 @@ const redenCart = (list) => {
     });
 }
 renderProducts( products);
+
+
