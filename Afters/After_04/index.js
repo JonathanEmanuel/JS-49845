@@ -58,7 +58,7 @@ const renderProducts = (list) => {
         listProducts.innerHTML += // html
             `<div class="col-sm-4 col-md-3">
                 <div class="card p-2">
-                    <h4>${product.name} </h4>
+                    <h4 class="text-center">${product.name} </h4>
                     <img class="img-fluid" src="${product.img}" alt="${product.name}">
                     <h3 class="text-center">$${product.price} </h3>
                     <button id="${product.id} " type="button" class="btn btn-primary btnAddCart">
