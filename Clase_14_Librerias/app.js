@@ -1,6 +1,6 @@
 const btnSaludar = document.querySelector('#btnSaludar');
-let nombre = prompt('Nombre');
-
+let nombre = 'Juan'; //prompt('Nombre');
+/* 
 Swal.fire({
     title: "Clase 14 -",
     input: "text",
@@ -17,7 +17,7 @@ Swal.fire({
   }).then((result) => {
         console.log(result)
   });
-
+ */
 
 const agregar = () =>{
     Swal.fire({
@@ -79,3 +79,20 @@ const mensaje = () => {
 btnSaludar.addEventListener('click', mensaje);
 
 //mostrarError('No tenemos Conexión a la RED');
+
+/* ----------------------------- Librebría Luxon ---------------------------- */
+const f = new Date();
+console.log( f.toLocaleDateString() )
+console.log( 'Mes ', f.getMonth())
+
+const DateTime = luxon.DateTime;
+
+const fecha = DateTime.now();
+
+console.log( fecha.toString());
+console.log( 'Mes; ', fecha.month, 'Día; ', fecha.day);
+console.log( 'Zona: ', fecha.zoneName );
+
+console.log( 'Formateando la fecha: ', fecha.toLocaleString( DateTime.DATE_FULL ));
+
+
