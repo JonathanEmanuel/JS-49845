@@ -26,14 +26,22 @@ btnModalCarrito.addEventListener('click', function(){
 })
 
 btnSave.addEventListener('click', ()=> {
+    console.log('Inicio')
+    setTimeout( () => {
+
+        
+        Swal.fire({
+            title: "Carrito de Compras",
+            text: "Compra finalizada",
+            icon: "success"
+        });
+    
+
+    }, 3000)
+
 
     modal.hide();
-    Swal.fire({
-        title: "Carrito de Compras",
-        text: "Compra finalizada",
-        icon: "success"
-    });
-
+   
     localStorage.removeItem('cart');
 })
 
