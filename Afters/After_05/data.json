@@ -1,0 +1,18 @@
+{
+    "products": [
+        { "id_product": 1, "name": "WHEELJACK GC606", "img": "images/gabinete.png", "price": 1000, "id_category": 1 },
+        { "id_product": 2, "name": "Auriculares Motorola", "img": "images/audio.png", "price": 200, "id_category": 1 },
+        { "id_product": 3, "name": "Teclado DRAGONBORN K630", "img": "images/teclado.png", "price": 300, "id_category": 1 },
+        { "id_product": 4, "name": "Celular Motorola E22", "img": "images/motorola.jpg", "price": 500, "id_category": 2 },
+        { "id_product": 5, "name": "Zapatilla Nike", "img": "images/zapatilla.webp", "price": 600, "id_category": 3 },
+        { "id_product": 6, "name": "Zapatilla Topper", "img": "images/topper.jpg", "price": 680, "id_category": 3 }
+
+    ],
+    "category": [
+        { "id_category": 1, "name": "Computación"},
+        { "id_category": 2, "name": "Celulares"},
+        { "id_category": 3, "name": "Textil"},
+        { "id_category": 4, "name": "Herramientas"},
+        { "id_category": 5, "name": "Alimentos"}
+    ]
+}

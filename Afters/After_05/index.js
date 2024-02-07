@@ -10,6 +10,8 @@ const btnClose = document.querySelector('#btnClose');
 const btnSave = document.querySelector('#btnSave');
 const btnOrder = document.querySelector('#btnOrder');
 
+let products_list = [];
+
 const listCart = JSON.parse( localStorage.getItem('cart') ) || [];
 const cart = new Cart(listCart);
 
@@ -51,8 +53,15 @@ btnClose.addEventListener('click', ()=> {
 
 inputSearch.addEventListener('input', (event) => {
     const search = event.target.value; // inputSearch.valur
-    const newList = products.filter(  (product) => product.name.toLowerCase().includes( search.toLowerCase() )  );
+    const newList = products_list.filter(  (product) => product.name.toLowerCase().includes( search.toLowerCase() )  );
     renderProducts(newList);
+})
+
+selectCategory.addEventListener('change', (e) => {
+    const id_category = selectCategory.value;
+    console.log('Cateoría', id_category )
+
+    filtroCategoria( id_category )
 })
 
 btnOrder.addEventListener('click', ()=> {
@@ -71,6 +80,13 @@ btnOrder.addEventListener('click', ()=> {
     btnOrder.setAttribute('disabled', true)
 })
 
+const filtroCategoria = ( id_category ) => {
+    const newList = products_list.filter (  (product) => product.id_category == id_category );
+    renderProducts(newList);
+
+    //console.table(newList);
+}
+
  /* ------- Recibe la lista de productos y la recorre y loos renderizas ------- */
 const renderProducts = (list) => {
     listProducts.innerHTML = '';
@@ -81,7 +97,7 @@ const renderProducts = (list) => {
                     <h4 class="text-center">${product.name} </h4>
                     <img class="img-fluid" src="${product.img}" alt="${product.name}">
                     <h3 class="text-center">$${product.price} </h3>
-                    <button id="${product.id} " type="button" class="btn btn-primary btnAddCart">
+                    <button id="${product.id_product}" type="button" class="btn btn-primary btnAddCart">
                         <i class="fa-solid fa-cart-plus"></i> Agregar
                     </button>
                 </div>
@@ -98,7 +114,7 @@ const renderProducts = (list) => {
 
 const addToCart = ( e )=> {
     const id = e.target.id;
-    const product = products.find( item => item.id == id );
+    const product = products.find( item => item.id_product == id );
     console.table(product);
     cart.addToCart( product);
     cartCount.innerText = cart.getCount();
@@ -124,10 +140,45 @@ const redenCart = (list) => {
                 <td> ${product.units}</td>
                 <td>$${product.price}</td>
                 <td>$${product.price * product.units}</td>
-
             </tr>`
     });
 }
-renderProducts( products);
+
+const renderCategory = ( list) => {
+    selectCategory.innerHTML = '';
+    list.forEach( category => {
+        selectCategory.innerHTML += // html
+        `<option value="${category.id_category}"> ${category.name}</option>`
+    });
+}
+
+// hacemos una solicitud AJAX -> Fetch
+const getProducts = async () => {
+
+    try {
+        const endPoint = 'data.json';
+        const resp = await fetch(endPoint);
+        const json = await resp.json();
 
 
+        const { products, category } = json;
+        products_list = products;
+        console.table( category)
+        renderProducts( products);
+        renderCategory( category)
+
+    } catch (error) {
+        Swal.fire({
+            title: "Error",
+            text: 'Ocurrio un error al mostrar los Productos, por favor intente más tarde :)',
+            icon: "error",
+            confirmButtonText: 'Aceptar'
+        });
+
+        console.log(error)
+    }
+
+
+}
+
+getProducts();
